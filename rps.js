@@ -1,4 +1,4 @@
-function game() {
+function playRound() {
     // The code will be defined as a main function that has no inputs
 
     // First I will define the parameters that you can use to play the game
@@ -66,11 +66,11 @@ function game() {
             
             }
         }
-    let computerChoice = getComputerChoice();
-    return eval(playerChoice, computerChoice);
+    
+    return eval(playerChoice, getComputerChoice());
     }
 
-console.log(game());
+console.log(playRound());
 
 
 
