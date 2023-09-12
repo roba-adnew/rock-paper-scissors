@@ -1,6 +1,5 @@
+// The game will be defined as a main function that has no inputs
 function playRound() {
-    // The code will be defined as a main function that has no inputs
-
     // First I will define the parameters that you can use to play the game
     const hands = ["rock", "paper", "scissors"];
     const handsAbbrv = ["r", "p", "s"];
@@ -15,8 +14,6 @@ function playRound() {
     // first letter of the hand. If they don't provide either, we will return that the hand is invalid 
     let playerChoice = prompt("Rock, Paper Scissors, Shoot: ");
     playerChoice = playerChoice.toLowerCase();
-    console.log(hands.includes(playerChoice));
-    console.log(handsAbbrv.includes(playerChoice));
 
     if (!hands.includes(playerChoice) && !handsAbbrv.includes(playerChoice)) {
         return "You didn't throw a valid hand...come on";
@@ -33,35 +30,55 @@ function playRound() {
         const loser_message = "You lost! "+ computerSelection + " beats " + playerSelection;
         const tie_message = "You tied because you both played " + playerSelection;
 
+        let playerWon = 0;
+
         switch (playerSelection) {
             case "rock": 
                 switch (computerSelection) {
                     case "rock": 
-                        return tie_message;
+                        console.log(tie_message);
+                        playerWon = 0;
+                        return playerWon;
                     case "paper":
-                        return loser_message;
+                        console.log(loser_message);
+                        playerWon = 0;
+                        return playerWon;
                     case "scissors": 
-                        return winner_message;
+                        console.log(winner_message);
+                        playerWon = 1;
+                        return playerWon;
                 }
 
             case "paper": 
                 switch (computerSelection) {
                     case "rock": 
-                        return winner_message;
+                        console.log(winner_message);
+                        playerWon = 1;
+                        return playerWon;
                     case "paper":
-                        return tie_message;
+                        console.log(tie_message);
+                        playerWon = 0;
+                        return playerWon;
                     case "scissors": 
-                        return loser_message;
+                        console.log(loser_message);
+                        playerWon = 0;
+                        return playerWon;
                 }
 
             case "scissors": 
                 switch (computerSelection) {
                     case "rock": 
-                        return loser_message;
+                        console.log(loser_message);
+                        playerWon = 0;
+                        return playerWon;
                     case "paper":
-                        return winner_message;
+                        console.log(winner_message);
+                        playerWon = 1;
+                        return playerWon;
                     case "scissors": 
-                        return tie_message;
+                        console.log(tie_message);
+                        playerWon = 0;
+                        return playerWon;
                 }
             
             }
@@ -70,8 +87,20 @@ function playRound() {
     return eval(playerChoice, getComputerChoice());
     }
 
-console.log(playRound());
+// The game will consist of 5 rounds, in which we will print the result of each round and how well you did 
+function game() {
+    let playerWins = 0;
+    let compWins = 0;
 
+    for (let i = 0; i < 5; i++) {
+        let result = playRound();
+        playerWins += result;
+    }
+
+    return "You won " + playerWins + " round(s)!" 
+    }
+
+console.log(game()); 
 
 
 
