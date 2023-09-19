@@ -33,24 +33,34 @@ function playRound(playerChoice) {
 
 
     const buttons = document.querySelectorAll("button");
-    const scoreDisplay = document.getElementById("results");
-    let rounds = 0;
-
+    const roundDisplay = document.getElementById("roundResults");
+    const runningDisplay = document.getElementById("runningResults"); 
+    
+    let playerWins = 0;
+    let compWins = 0;
+    let ties = 0;
     // We will turn this nodelist into an array and then call a function on each
 
     buttons.forEach(button => 
         button.addEventListener("click", function(event) {
+            let rounds = 0;
+
             let message = "";
             let result = playRound(button.value);
 
-            if (result == 1) {message += "You win!"}
-            else if (result == 0) {message += "You tied!"}
-            else {message += "You lose!"}
 
-            scoreDisplay.innerHTML = message;
-            rounds += 1;
-            })
-        );
+            if (result == 1) {message += "You win!"; playerWins += 1}
+            else if (result == 0) {message += "You tied!", ties += 1}
+            else {message += "You lose!", compWins += 1}
+
+            roundDisplay.innerHTML = message;
+            runningDisplay.innerHTML = "You've won " + playerWins + " times! "
+                + "You've lost " + compWins + " times, and you've tied " 
+                + ties + " times.";
+            rounds += 1;    
+            
+        })
+    );
 ``
 
 
