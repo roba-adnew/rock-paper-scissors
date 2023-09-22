@@ -32,6 +32,7 @@ function playRound(playerChoice) {
     }
 
 
+function playUI () {
     const buttons = document.querySelectorAll("button");
     const roundDisplay = document.getElementById("roundResults");
     const runningDisplay = document.getElementById("runningResults"); 
@@ -61,7 +62,9 @@ function playRound(playerChoice) {
             
         })
     );
-``
+}
+
+playUI();
 
 
 
